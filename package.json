@@ -1,0 +1,35 @@
+{
+  "name": "element-inspector",
+  "version": "0.0.1",
+  "description": "Inspect DOM elements like developer tools of browser",
+  "main": "src/element-inspector.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cou929/element-inspector.git"
+  },
+  "author": "Kosei Moriyama <cou929@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cou929/element-inspector/issues"
+  },
+  "homepage": "https://github.com/cou929/element-inspector",
+  "devDependencies": {
+    "karma-mocha": "^0.1.10",
+    "karma-html2js-preprocessor": "^0.1.0",
+    "karma-mocha-debug": "^0.1.2",
+    "karma-mocha-reporter": "^1.0.2",
+    "grunt-karma": "^0.10.1",
+    "mocha": "^2.2.1",
+    "espowerify": "^0.10.0",
+    "grunt": "^0.4.5",
+    "power-assert": "^0.10.2",
+    "grunt-contrib-jshint": "^0.11.1",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "grunt-espower": "^0.10.0"
+  }
+}
