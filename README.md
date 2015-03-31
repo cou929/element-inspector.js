@@ -19,15 +19,15 @@ new ElementInspector({
 
 ### `targetSelector`
 
-The target element to enable inspector. Required.
+The target element to enable inspector. `document` element is used if not specified.
 
 ### `onMousemove`
 
 Callback function of mousemove event. The argument of callback is event object.
 
-### `onOverlayClicked`
+### `onClick`
 
-Callback function of click event of overlay element, which indicates the dom of current mouse position. The argument of callback is event object.
+Callback function of click event of targetSelector element. The argument of callback is event object.
 
 ### `overlayBackgroundColor`
 
@@ -42,6 +42,17 @@ Show overlay.
 ### `hideOverlay()`
 
 Hide overlay.
+
+## Properties
+
+### `currentTarget`
+
+The dom node which mouse cursor points currently.
+
+### `clicked`
+
+The flag indicates the target elements are clicked or not.
+For instance, if `clicked` is false on `onClick` event handler, this may indicate that the user selects the node.
 
 ## Test
 
