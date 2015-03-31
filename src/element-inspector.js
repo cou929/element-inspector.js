@@ -2,13 +2,18 @@
     'use strict';
 
     function ElementInspector(options) {
-        this.el = document.querySelector(options.targetSelector);
         this.doc = options.doc || document;
+        if (options.targetSelector) {
+            this.el = this.doc.querySelector(options.targetSelector);
+        } else {
+            this.el = this.doc;
+        }
         this.onMousemove = options.onMousemove;
-        this.onOverlayClicked = options.onOverlayClicked;
+        this.onClick = options.onClick;
         this.overlayBackgroundColor = options.overlayBackgroundColor || 'rgba(102, 204, 255, 0.5)';
         this.clicked = false;
         this.overlay = null;
+        this.currentTarget = null;
 
         this._init();
     }
@@ -24,14 +29,17 @@
                 return;
             }
 
-            if (e.target === that.overlay) {
+            if (e.target === that.currentTarget) {
                 return;
             }
 
             if (ignore.indexOf(e.target) > -1) {
+                that.currentTarget = null;
                 that.hideOverlay();
                 return;
             }
+
+            that.currentTarget = e.target;
            
             var offset = that._getOffset(e.target);
             var width = that._getOuterSize(e.target, 'Width');
@@ -114,17 +122,19 @@
     ElementInspector.prototype.appendOverlay = function() {
         var overlay = this.doc.createElement('div');
         overlay.setAttribute('id', 'element-inspector-overlay');
-        overlay.setAttribute('style', 'position: absolute; z-index: 1000000; background-color: ' + this.overlayBackgroundColor + ';');
+        overlay.setAttribute('style', 'pointer-events: none; position: absolute; z-index: 1000000; background-color: ' + this.overlayBackgroundColor + ';');
         this.doc.body.appendChild(overlay);
 
         this.overlay = this.doc.querySelector('#element-inspector-overlay');
 
         var that = this;
-        this.overlay.addEventListener('click', function(e) {
-            that.clicked = !that.clicked;
-            if (that._isFunction(that.onOverlayClicked)) {
-                that.onOverlayClicked(e);
+        this.el.addEventListener('click', function(e) {
+            if (that._isFunction(that.onClick)) {
+                that.onClick(e);
             }
+            that.clicked = !that.clicked;
+            e.stopPropagation();
+            return false;
         });
     };
 
