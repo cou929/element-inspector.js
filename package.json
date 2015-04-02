@@ -1,6 +1,6 @@
 {
   "name": "element-inspector",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Inspect DOM elements like developer tools of browser",
   "main": "src/element-inspector.js",
   "scripts": {
