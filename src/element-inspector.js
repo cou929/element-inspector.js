@@ -133,6 +133,7 @@
                 that.onClick(e);
             }
             that.clicked = !that.clicked;
+            e.preventDefault();
             e.stopPropagation();
             return false;
         });
