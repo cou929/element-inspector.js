@@ -140,4 +140,4 @@
     };
 
     global.ElementInspector = ElementInspector;
-})(this);
+})(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : {});

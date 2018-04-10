@@ -27,7 +27,7 @@
         onMousemove: function(e) {
           captured = e.target.outerHTML;
         },
-        onOverlayClicked: function() {
+        onClick: function() {
           document.querySelector('textarea').value = captured;
         }
       });
